@@ -1,14 +1,25 @@
-#include <iostream>
-#include <vector>
-
-using std::vector;
+#include <bits/stdc++.h>
+using namespace std;
+///////////////////////////////////////
+#define SZ(s) (int)s.size()
+#define ALL(v) v.begin(), v.end()
 
 vector<int> optimal_summands(int n) {
-  vector<int> summands;
-  //write your code here
-  return summands;
-}
+	vector<int> summands;
+	int i = 1;
+	while (n) {
+		if (n - i >= 0) {
+			n -= i;
+			summands.push_back(i);
+		} else {
+			break;
+		}
+		i++;
+	}
+	summands[SZ(summands) - 1] += n;
 
+	return summands;
+}
 int main() {
   int n;
   std::cin >> n;

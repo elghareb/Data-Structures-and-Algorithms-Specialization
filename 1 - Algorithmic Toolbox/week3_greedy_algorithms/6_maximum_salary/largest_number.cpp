@@ -1,21 +1,25 @@
-#include <algorithm>
-#include <sstream>
-#include <iostream>
-#include <vector>
-#include <string>
+#include <bits/stdc++.h>
+using namespace std;
+///////////////////////////////////////
+#define SZ(s) (int)s.size()
+#define ALL(v) v.begin(), v.end()
 
-using std::vector;
-using std::string;
-
+int cmp(string a, string b) {
+	string ab = a.append(b);
+	string ba = b.append(a);
+	return ab.compare(ba) > 0 ? 1 : 0;
+}
 string largest_number(vector<string> a) {
-  //write your code here
-  std::stringstream ret;
-  for (size_t i = 0; i < a.size(); i++) {
-    ret << a[i];
-  }
-  string result;
-  ret >> result;
-  return result;
+	//write your code here
+
+	sort(ALL(a),cmp);
+	std::stringstream ret;
+	for (size_t i = 0; i < a.size(); i++) {
+		ret << a[i];
+	}
+	string result;
+	ret >> result;
+	return result;
 }
 
 int main() {

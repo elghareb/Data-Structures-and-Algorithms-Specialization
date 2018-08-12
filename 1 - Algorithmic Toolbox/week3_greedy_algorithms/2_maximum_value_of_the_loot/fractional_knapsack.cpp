@@ -1,29 +1,37 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
+using namespace std;
+///////////////////////////////////////
+#define SZ(s) (int)s.size()
+#define ALL(v) v.begin(), v.end()
 
-using std::vector;
-
-double get_optimal_value(int capacity, vector<int> weights, vector<int> values) {
-  double value = 0.0;
-
-  // write your code here
-
-  return value;
+double get_optimal_value(int capacity, vector<pair<double, int>> valwe) {
+	double value = 0.0;
+	sort(ALL(valwe));
+	reverse(ALL(valwe));
+	for (auto it : valwe) {
+		int mn = min(it.second, capacity);
+		capacity -= mn;
+		value += mn * it.first;
+	}
+	return value;
 }
 
+
+
 int main() {
-  int n;
-  int capacity;
-  std::cin >> n >> capacity;
-  vector<int> values(n);
-  vector<int> weights(n);
-  for (int i = 0; i < n; i++) {
-    std::cin >> values[i] >> weights[i];
-  }
+	
+	int n, x, y;
+	int capacity;
+	std::cin >> n >> capacity;
+	vector<pair<double, int>> valwe;
+	for (int i = 0; i < n; i++) {
+		cin >> x >> y;
+		valwe.push_back( { (1.0 * x) / y, y });
+	}
 
-  double optimal_value = get_optimal_value(capacity, weights, values);
+	double optimal_value = get_optimal_value(capacity, valwe);
+	std::cout.precision(10);
+	std::cout << optimal_value << std::endl;
 
-  std::cout.precision(10);
-  std::cout << optimal_value << std::endl;
   return 0;
 }

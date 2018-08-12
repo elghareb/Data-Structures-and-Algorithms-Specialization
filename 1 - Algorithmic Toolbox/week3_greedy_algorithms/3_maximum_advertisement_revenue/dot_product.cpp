@@ -1,10 +1,13 @@
-#include <algorithm>
-#include <iostream>
-#include <vector>
-
-using std::vector;
+#include <bits/stdc++.h>
+using namespace std;
+///////////////////////////////////////
+#define SZ(s) (int)s.size()
+#define ALL(v) v.begin(), v.end()
 
 long long max_dot_product(vector<int> a, vector<int> b) {
+	
+  sort(ALL(a));
+  sort(ALL(b));
   // write your code here
   long long result = 0;
   for (size_t i = 0; i < a.size(); i++) {
