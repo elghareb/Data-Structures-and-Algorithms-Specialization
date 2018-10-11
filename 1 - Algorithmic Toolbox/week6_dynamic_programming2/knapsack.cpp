@@ -29,13 +29,6 @@ int optimal_weight(int W, const vector<int> &w) {
 				dp[i][j] = dp[i - 1][j];
 		}
 	}
-	for (int i = 1; i <= SZ(w); ++i) {
-		for (int j = 1; j <= W; ++j) {
-
-			cout << dp[i][j] << " ";
-		}
-		cout << endl;
-	}
 
 	return dp[SZ(w)][W];
 }
